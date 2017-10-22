@@ -28,9 +28,11 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
+        flash[:success] = 'Room was successfully created.'
+        format.html { redirect_to @room }
         format.json { render :show, status: :created, location: @room }
       else
+        flash[:danger] = 'Error in creating Room.'
         format.html { render :new }
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
