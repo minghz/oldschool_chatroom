@@ -9,16 +9,10 @@
   </head>
 
   <body>
-    <% if flash[:success] %>
-      <div class="alert alert-success" role="alert">
-        <%= flash[:success] %>
-      </div>
-    <% elsif flash[:danger] %>
-      <div class="alert alert-danger" role="alert">
-        <%= flash[:danger] %>
-      </div>
-    <% end %>
+    <%= render 'layouts/navigation' %>
 
-    <%= yield %>
+    <%= render 'layouts/flashes' %>
+
+    <div class="container <%= controller_full_name %> <%= action_name %>"><%= yield %></div>
   </body>
 </html>
